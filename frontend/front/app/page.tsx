@@ -15,7 +15,7 @@ export default function Home() {
   // 🔥 BACKEND CALL ADDED HERE
   const handleUrlShortened = async (originalUrl: string) => {
     try {
-      const res = await fetch("http://ec2-3-26-18-81.ap-southeast-2.compute.amazonaws.com:8000/urls/", {
+      const res = await fetch("https://unfroward-uneffusive-kerrie.ngrok-free.dev/urls/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
