@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:1234vivek@my-postgres-db.c7gucgkqigm2.ap-southeast-2.rds.amazonaws.com:5432/postgres
