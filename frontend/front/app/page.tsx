@@ -12,10 +12,11 @@ export default function Home() {
     shortUrl: string
   } | null>(null)
 
-  // 🔥 BACKEND CALL ADDED HERE
   const handleUrlShortened = async (originalUrl: string) => {
     try {
-      const res = await fetch("https://unfroward-uneffusive-kerrie.ngrok-free.dev/urls/", {
+      const BASE_URL = process.env.NEXT_PUBLIC_API_URL
+
+      const res = await fetch(`${BASE_URL}/urls/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +30,7 @@ export default function Home() {
 
       setShortenedData({
         originalUrl: data.long_url,
-        shortUrl: data.short_url,
+        shortUrl: `${BASE_URL}/r/${data.short_code}`, // ✅ correct redirect URL
       })
 
     } catch (err) {
