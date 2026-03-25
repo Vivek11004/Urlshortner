@@ -12,11 +12,10 @@ export default function Home() {
     shortUrl: string
   } | null>(null)
 
+  // 🔥 BACKEND CALL ADDED HERE
   const handleUrlShortened = async (originalUrl: string) => {
     try {
-      const BASE_URL = process.env.NEXT_PUBLIC_API_URL
-
-      const res = await fetch(`${BASE_URL}/urls/`, {
+      const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/urls/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +29,7 @@ export default function Home() {
 
       setShortenedData({
         originalUrl: data.long_url,
-        shortUrl: `${BASE_URL}/r/${data.short_code}`, // ✅ correct redirect URL
+        shortUrl: data.short_url,
       })
 
     } catch (err) {
@@ -73,4 +72,4 @@ export default function Home() {
       </div>
     </main>
   )
-}
+} 
